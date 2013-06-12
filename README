@@ -1,0 +1,6 @@
+README
+
+This is stackapp together with Node.js - serving pages, Json and PHP as a backend for admins and
+other staff.
+
+The app will run on Mxit platform, and will use their API as far as possible. 
