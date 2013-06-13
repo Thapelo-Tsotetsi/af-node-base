@@ -1,22 +1,20 @@
 var http = require('http');
 var path = require('path');
 
-
 //array of our pages
 
 var pages = [
-	{route: '', output: 'Welcome,via Node.js <br> <a href="bursaries">Bursaries</a> <br> <a href="gb">Graduate Programmes</a> <br> <a href="intern">Internships</a> <br> <a href="learnerships">Learnerships</a> <br> <a href="startup">Startup Jobs</a>'},	
-	{route: 'bursaries', output: 'Department of Education Bursaries 2014'},
-	{route: 'gb', output: '<h3> Graduate Programmes 2014 </h3>'},
-	{route: 'intern', output: 'Internships 2013/14'},
-	{route: 'learnerships', output: 'Learnerships 2013/14'},
-	{route: 'startup', output: 'Startup Jobs Closing This Month'},
-	{route: 'another page', output: function(){return 'Here\'s '+this.route;}},
-	];
+				{route:'', output: '<p><b>sharing board via Node.js</b> <br /> <a href="bursaries">1</a> <b>&rsaquo;&rsaquo; </b> <a href="bursaries">Bursaries</a></p> <p> <a href="gp">2</a> <b>&rsaquo;&rsaquo; </b><a href="gp">Graduate Programmes</a> </p> <p> <a href="intern">3</a> <b>&rsaquo;&rsaquo; </b><a href="intern">Internships</a> </p> <p> <a href="ls">4</a> <b>&rsaquo;&rsaquo; </b><a href="ls">Learnerships</a> </p> <p> <a href="sj">5</a> <b>&rsaquo;&rsaquo; </b><a href="sj">Startup Jobs</a> </p>'},
+				{route:'home', output: 'bursaries page <a href="bursaries">Bursary</a>'},
+	 			{route:'bursaries', output: '<p><b>Bursary page </b></p> <br /> <p> <a href="/">5</a> <b>&rsaquo; </b><a href="/">Home</a> </p>'},
+	 			{route: 'gp', output: '<p><b>Graduate Programme page</b></p> <br /> <p> <a href="/">5</a> <b>&rsaquo; </b><a href="/">Home</a> </p>'},
+	 			{route: 'intern', output: '<p><b>Internships</b></p> <br /> <p> <a href="/">5</a> <b>&rsaquo; </b><a href="/">Home</a> </p>'},
+	 			{route: 'ls', output: '<p><b>Learnerships page</b></p> <br /> <p> <a href="/">5</a> <b>&rsaquo; </b><a href="/">Home</a> </p>'},
+	 			{route: 'sj', output: '<p><b>Startup jobs page</b></p> <br /> <p> <a href="/">5</a> <b>&rsaquo; </b><a href="/">Home</a> </p>'},	
+			]; 
 
 
 http.createServer(function (request, response) {
-
 	var lookup = path.basename(decodeURI(request.url));
 
 	pages.forEach(function(page){
@@ -29,6 +27,7 @@ http.createServer(function (request, response) {
 		response.writeHead(404);
 		response.end('Page Not Found');
 	}
+
   //res.writeHead(200, {'Content-Type': 'text/html'});
-  //res.end('Hello from mxit <a href="http://appfog.com">AppFog.com</a>');
+  //res.end('Hello from <a href="http://appfog.com">AppFog.com</a>');
 }).listen(process.env.VMC_APP_PORT || 1337, null);
